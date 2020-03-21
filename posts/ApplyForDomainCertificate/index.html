@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="acme.sh 配合Let&#39;s Encrypt配置泛域名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用acme.sh申请泛域名证书">
+<meta property="og:url" content="http://yoursite.com/posts/ApplyForDomainCertificate/index.html">
+<meta property="og:site_name" content="明天你好">
+<meta property="og:description" content="acme.sh 配合Let&#39;s Encrypt配置泛域名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/posts/ApplyForDomainCertificate/%E6%B7%BB%E5%8A%A0TXT%E8%AE%B0%E5%BD%95.png">
+<meta property="article:published_time" content="2019-06-15T13:31:00.000Z">
+<meta property="article:modified_time" content="2019-11-24T10:28:30.337Z">
+<meta property="article:author" content="tremyang">
+<meta property="article:tag" content="Domain">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/posts/ApplyForDomainCertificate/%E6%B7%BB%E5%8A%A0TXT%E8%AE%B0%E5%BD%95.png">
+
+<link rel="canonical" href="http://yoursite.com/posts/ApplyForDomainCertificate/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>利用acme.sh申请泛域名证书 | 明天你好</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">明天你好</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/ApplyForDomainCertificate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tremyang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明天你好">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          利用acme.sh申请泛域名证书
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-15 21:31:00" itemprop="dateCreated datePublished" datetime="2019-06-15T21:31:00+08:00">2019-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-24 18:28:30" itemprop="dateModified" datetime="2019-11-24T18:28:30+08:00">2019-11-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Domain/" itemprop="url" rel="index"><span itemprop="name">Domain</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <center>acme.sh 配合Let's Encrypt配置泛域名</center>
+<a id="more"></a>
+
+<h3 id="1-个人配置"><a href="#1-个人配置" class="headerlink" title="1.个人配置"></a>1.个人配置</h3><ul>
+<li>Debian9</li>
+</ul>
+<h3 id="2-安装acme-sh"><a href="#2-安装acme-sh" class="headerlink" title="2. 安装acme.sh"></a>2. 安装acme.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">curl  https://get.acme.sh | sh</span><br><span class="line">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                               Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   671  100   671    0     0    680      0 --:--:-- --:--:-- --:--:--   679</span><br><span class="line">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                               Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100  112k  100  112k    0     0   690k      0 --:--:-- --:--:-- --:--:--  693k</span><br><span class="line">[Fri 30 Dec 01:03:32 GMT 2016] Installing from online archive.</span><br><span class="line">[Fri 30 Dec 01:03:32 GMT 2016] Downloading https://github.com/Neilpang/acme.sh/archive/master.tar.gz</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Extracting master.tar.gz</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installing to /home/user/.acme.sh</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installed to /home/user/.acme.sh/acme.sh</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installing <span class="built_in">alias</span> to <span class="string">'/home/user/.profile'</span></span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] OK, Close and reopen your terminal to start using acme.sh</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installing cron job</span><br><span class="line">no crontab <span class="keyword">for</span> user</span><br><span class="line">no crontab <span class="keyword">for</span> user</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Good, bash is found, so change the shebang to use bash as preferred.</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] OK</span><br><span class="line">[Fri 30 Dec 01:03:33 GMT 2016] Install success!</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后执行 <code>source ~/.bashrc</code> 以确保脚本所设置的命令别名生效。</p>
+<p>如果安装报错，那么可能是因为系统缺少 acme.sh 所需要的依赖项，acme.sh 的依赖项主要是 netcat(nc)，我们通过以下命令来安装这些依赖项，然后重新安装一遍 acme.sh:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get -y install netcat</span><br></pre></td></tr></table></figure>
+<h3 id="3-生成ECC证书"><a href="#3-生成ECC证书" class="headerlink" title="3.生成ECC证书"></a>3.生成ECC证书</h3><h4 id="3-1-方式一：添加一条TXT记录"><a href="#3-1-方式一：添加一条TXT记录" class="headerlink" title="3.1 方式一：添加一条TXT记录"></a>3.1 方式一：添加一条TXT记录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --issue  --dns -d iteemo.top -d *.iteemo.top -k ec-256</span><br></pre></td></tr></table></figure>
+<p>会出现警告提示，需要输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue --dns -d iteemo.top -d *.iteemo.top -k ec-256   \</span><br><span class="line">   --yes-I-know-dns-manual-mode-enough-go-ahead-please</span><br></pre></td></tr></table></figure>
+<pre><code>需要同时添加裸域名及泛域名。注意要将非泛域名的域名放在前面，否则可能会遇到一些问题。</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@:~<span class="comment"># acme.sh --issue --dns -d iteemo.top -d *.iteemo.top   \</span></span><br><span class="line">&gt;    --yes-I-know-dns-manual-mode-enough-go-ahead-please</span><br><span class="line">[Sat Jun 15 21:51:23 CST 2019] Creating domain key</span><br><span class="line">[Sat Jun 15 21:51:23 CST 2019] The domain key is here: /root/.acme.sh/iteemo.top/iteemo.top.key</span><br><span class="line">[Sat Jun 15 21:51:23 CST 2019] Multi domain=<span class="string">'DNS:iteemo.top,DNS:*.iteemo.top'</span></span><br><span class="line">[Sat Jun 15 21:51:23 CST 2019] Getting domain auth token <span class="keyword">for</span> each domain</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Getting webroot <span class="keyword">for</span> domain=<span class="string">'iteemo.top'</span></span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Getting webroot <span class="keyword">for</span> domain=<span class="string">'*.iteemo.top'</span></span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Add the following TXT record:</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Domain: <span class="string">'_acme-challenge.iteemo.top'</span></span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] TXT value: <span class="string">'AoZCxYyg8Q_lGg-RYATV5YGTpMoW8vatPxWPFXLWiO0'</span></span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Please be aware that you prepend _acme-challenge. before your domain</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] so the resulting subdomain will be: _acme-challenge.iteemo.top</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Add the following TXT record:</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Domain: <span class="string">'_acme-challenge.iteemo.top'</span></span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] TXT value: <span class="string">'bnzIZFD_SnCzXcJ055wpUnXuD8HPU6jYWC7tK1mNKV4'</span></span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Please be aware that you prepend _acme-challenge. before your domain</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] so the resulting subdomain will be: _acme-challenge.iteemo.top</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Please add the TXT records to the domains, and re-run with --renew.</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] Please add <span class="string">'--debug'</span> or <span class="string">'--log'</span> to check more details.</span><br><span class="line">[Sat Jun 15 21:51:24 CST 2019] See: https://github.com/Neilpang/acme.sh/wiki/How-to-debug-acme.sh</span><br><span class="line">root:~<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>记录下其中的 <code>&lt;ACME_CHALLENGE_STRING&gt;</code> 并前往你的 DNS 服务提供商，为主机名<code>_acme-challenge.iteemo.top</code> 添加一条 TXT 记录，内容即为上述的 <code>&lt;ACME_CHALLENGE_STRING&gt;</code>。<br>如图：<br><img src="%E6%B7%BB%E5%8A%A0TXT%E8%AE%B0%E5%BD%95.png" alt=""><br>提交后可以等待一小段时间以便让 DNS 生效。此过程通常非常快，不到一分钟即可完成；但是，也可能需要多达 72 小时的时间。</p>
+<p>验证更改是否生效</p>
+<ul>
+<li>对于 Unix 和 Linux 系统：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig TXT _acme-challenge.iteemo.top</span><br></pre></td></tr></table></figure></li>
+<li>对于 Windows 系统：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c:\&gt; nslookup -<span class="built_in">type</span>=TXT _acme-challenge.iteemo.top</span><br></pre></td></tr></table></figure>
+响应信息将显示在各自的行（不附加到另一行）中，类似如下所示：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_acme-challenge.iteemo.top      text =</span><br><span class="line"></span><br><span class="line">        <span class="string">"bnzIZFD_SnCzXcJ055wpUnXuD8HPU6jYWC7tK1mNKV4"</span></span><br></pre></td></tr></table></figure>
+重新申请签发证书:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --renew --dns -d iteemo.top -d *.iteemo.top --force --ecc</span><br></pre></td></tr></table></figure>
+会出现警告提示，需要输入以下命令<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --renew --dns -d iteemo.top -d *.iteemo.top --force --ecc   \</span><br><span class="line">   --yes-I-know-dns-manual-mode-enough-go-ahead-please</span><br></pre></td></tr></table></figure>
+来完成「续期」（现在的这种情况也等于申请签发）操作。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~<span class="comment"># acme.sh --renew --dns -d iteemo.top -d *.iteemo.top --force --ecc   \</span></span><br><span class="line">&gt;    --yes-I-know-dns-manual-mode-enough-go-ahead-please</span><br><span class="line">[Sat Jun 15 23:42:49 CST 2019] Renew: <span class="string">'iteemo.top'</span></span><br><span class="line">[Sat Jun 15 23:42:49 CST 2019] Multi domain=<span class="string">'DNS:iteemo.top,DNS:*.iteemo.top'</span></span><br><span class="line">[Sat Jun 15 23:42:49 CST 2019] Getting domain auth token <span class="keyword">for</span> each domain</span><br><span class="line">[Sat Jun 15 23:42:49 CST 2019] Verifying: iteemo.top</span><br><span class="line">[Sat Jun 15 23:42:52 CST 2019] Success</span><br><span class="line">[Sat Jun 15 23:42:52 CST 2019] *.iteemo.top is already verified, skip dns-01.</span><br><span class="line">[Sat Jun 15 23:42:52 CST 2019] Verify finished, start to sign.</span><br><span class="line">[Sat Jun 15 23:42:52 CST 2019] Lets finalize the order, Le_OrderFinalize: https://acme-v02.api.letsencrypt.org/acme/finalize/54159851/564091113</span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] Download cert, Le_LinkCert: https://acme-v02.api.letsencrypt.org/acme/cert/035eaa09e215e8828df9e7b8d256a1260c04</span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] Cert success.</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">····</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] Your cert is <span class="keyword">in</span>  /root/.acme.sh/iteemo.top_ecc/iteemo.top.cer </span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] Your cert key is <span class="keyword">in</span>  /root/.acme.sh/iteemo.top_ecc/iteemo.top.key </span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] The intermediate CA cert is <span class="keyword">in</span>  /root/.acme.sh/iteemo.top_ecc/ca.cer </span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] And the full chain certs is there:  /root/.acme.sh/iteemo.top_ecc/fullchain.cer </span><br><span class="line">[Sat Jun 15 23:42:53 CST 2019] It seems that you are using dns manual mode. please take care: The dns manual mode can not renew automatically, you must issue it again manually. You<span class="string">'d better use the other modes instead.</span></span><br><span class="line"><span class="string">[Sat Jun 15 23:42:53 CST 2019] Call hook error.</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：使用添加TXT记录的方式，需要自己手动更新证书，并且需要重新添加TXT记录</strong><br>参考<a href="https://github.com/Neilpang/acme.sh/wiki/dns-manual-mode" target="_blank" rel="noopener">DNS manual mode</a>和<a href="https://github.com/Neilpang/acme.sh/issues/1029" target="_blank" rel="noopener">acme.sh的issues</a></p>
+<h5 id="3-1-1-安装ECC证书"><a href="#3-1-1-安装ECC证书" class="headerlink" title="3.1.1 安装ECC证书"></a>3.1.1 安装ECC证书</h5><p>将证书和密钥安装到 /etc/v2ray 中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ~/.acme.sh/acme.sh --installcert -d iteemo.top --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-方式二：使用token"><a href="#3-2-方式二：使用token" class="headerlink" title="3.2 方式二：使用token"></a>3.2 方式二：使用token</h4><p>我们选用的 acme.sh 其实是支持直接使用主流 DNS 提供商的 API 接口来完成域名验证以及一些相关操作的。<br>可参考 这篇 <a href="https://github.com/Neilpang/acme.sh/blob/master/dnsapi/README.md" target="_blank" rel="noopener">README</a>或者<a href="https://github.com/Neilpang/acme.sh/wiki/dnsapi" target="_blank" rel="noopener">README</a>，其中包含了大部分主流 DNS 提供商的 Token 使用方法。<br>例如：<br><strong>1、Use Namesilo.com API</strong><br>You’ll need to generate an API key at <a href="https://www.namesilo.com/account_api.php" target="_blank" rel="noopener">https://www.namesilo.com/account_api.php</a> Optionally you may restrict the access to an IP range there.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> Namesilo_Key=<span class="string">"xxxxxxxxxxxxxxxxxxxxxxxx"</span></span><br></pre></td></tr></table></figure>
+<p>And now you can issue certs with:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue --dns dns_namesilo --dnssleep 900 -d example.com -d *.example.com</span><br></pre></td></tr></table></figure>
+<p><strong>2、Use CloudFlare domain API to automatically issue cert</strong><br>First you need to login to your CloudFlare account to get your API key.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CF_Key=<span class="string">"xxxxxxxxxxxxxx"</span></span><br><span class="line"><span class="built_in">export</span> CF_Email=<span class="string">"xxxxxxxx@gmail.com"</span></span><br></pre></td></tr></table></figure>
+<p>Ok, let’s issue a cert now:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue --dns dns_cf -d iteemo.top -d *.iteemo.top -k ec-256 --force</span><br></pre></td></tr></table></figure>
+<p>The CF_Key and CF_Email will be saved in <code>~/.acme.sh/account.conf</code> and will be reused when needed.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">root@vultr:~/.acme.sh<span class="comment"># acme.sh --issue --dns dns_cf -d iteemo.top -d *.iteemo.top -k ec-256 --force</span></span><br><span class="line">[Wed Jul 10 01:43:59 CST 2019] Creating domain key</span><br><span class="line">[Wed Jul 10 01:43:59 CST 2019] The domain key is here: /root/.acme.sh/iteemo.top_ecc/iteemo.top.key</span><br><span class="line">[Wed Jul 10 01:43:59 CST 2019] Multi domain=<span class="string">'DNS:iteemo.top,DNS:*.iteemo.top'</span></span><br><span class="line">[Wed Jul 10 01:43:59 CST 2019] Getting domain auth token <span class="keyword">for</span> each domain</span><br><span class="line">[Wed Jul 10 01:44:00 CST 2019] Getting webroot <span class="keyword">for</span> domain=<span class="string">'iteemo.top'</span></span><br><span class="line">[Wed Jul 10 01:44:00 CST 2019] Getting webroot <span class="keyword">for</span> domain=<span class="string">'*.iteemo.top'</span></span><br><span class="line">[Wed Jul 10 01:44:00 CST 2019] iteemo.top is already verified, skip dns-01.</span><br><span class="line">[Wed Jul 10 01:44:00 CST 2019] *.iteemo.top is already verified, skip dns-01.</span><br><span class="line">[Wed Jul 10 01:44:00 CST 2019] Verify finished, start to sign.</span><br><span class="line">[Wed Jul 10 01:44:00 CST 2019] Lets finalize the order, Le_OrderFinalize: https://acme-v02.api.letsencrypt.org/acme/finalize/54159851/691763276</span><br><span class="line">[Wed Jul 10 01:44:01 CST 2019] Download cert, Le_LinkCert: https://acme-v02.api.letsencrypt.org/acme/cert/03530b767e0231fb871191a736422ad0dd91</span><br><span class="line">[Wed Jul 10 01:44:02 CST 2019] Cert success.</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">[Wed Jul 10 01:44:02 CST 2019] Your cert is <span class="keyword">in</span>  /root/.acme.sh/iteemo.top_ecc/iteemo.top.cer </span><br><span class="line">[Wed Jul 10 01:44:02 CST 2019] Your cert key is <span class="keyword">in</span>  /root/.acme.sh/iteemo.top_ecc/iteemo.top.key </span><br><span class="line">[Wed Jul 10 01:44:02 CST 2019] The intermediate CA cert is <span class="keyword">in</span>  /root/.acme.sh/iteemo.top_ecc/ca.cer </span><br><span class="line">[Wed Jul 10 01:44:02 CST 2019] And the full chain certs is there:  /root/.acme.sh/iteemo.top_ecc/fullchain.cer</span><br></pre></td></tr></table></figure>
+<p>这样就完成域名的所有权验证以及进行证书申请签发了</p>
+<h3 id="4-更新证书"><a href="#4-更新证书" class="headerlink" title="4.更新证书"></a>4.更新证书</h3><p><code>acme.sh</code>生成的证书在 60 天以后会自动更新。当然方式一需要手动更新。</p>
+<h3 id="5-更新acme-sh"><a href="#5-更新acme-sh" class="headerlink" title="5.更新acme.sh"></a>5.更新acme.sh</h3><p>目前由于<code>acme</code>协议和<code>Let&#39;s Encrypt CA</code>都在频繁的更新, 因此 acme.sh 也经常更新以保持同步<br>升级 acme.sh 到最新版 :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --upgrade</span><br></pre></td></tr></table></figure>
+<p>如果你不想手动升级, 可以开启自动升级:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --upgrade  --auto-upgrade</span><br></pre></td></tr></table></figure>
+<p>之后, acme.sh 就会自动保持更新了.</p>
+<p>你也可以随时关闭自动更新:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --upgrade  --auto-upgrade  0</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-吊销证书"><a href="#6-吊销证书" class="headerlink" title="6.吊销证书"></a>6.吊销证书</h3><p>输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --remove  -d iteemo.top --ecc</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh  --remove  -d *.iteemo.top --ecc</span><br></pre></td></tr></table></figure>
+<h3 id="7-别人家的安装方式"><a href="#7-别人家的安装方式" class="headerlink" title="7.别人家的安装方式"></a>7.别人家的安装方式</h3><p>1、<a href="https://blog.gazer.win/essay/setting-up-tls-with-lets-encrypt-ecc-and-rsa-certificates.html" target="_blank" rel="noopener">别人家的安装方式</a><br>2、<a href="https://juejin.im/post/5b6542ed51882519d3468d6d#heading-5" target="_blank" rel="noopener">别人家的安装方式</a><br>3、<a href="https://keep.moe/2018/03/14/lets-encrypt-wildcard/#top" target="_blank" rel="noopener">比较清楚的一个</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Domain/" rel="tag"># Domain</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/InstallFileBrowser/" rel="prev" title="服务器安装Filebrowser">
+      <i class="fa fa-chevron-left"></i> 服务器安装Filebrowser
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/SourcetreeRegisterlessInstallation/" rel="next" title="Sourcetree免注册安装">
+      Sourcetree免注册安装 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-个人配置"><span class="nav-text">1.个人配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安装acme-sh"><span class="nav-text">2. 安装acme.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-生成ECC证书"><span class="nav-text">3.生成ECC证书</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-方式一：添加一条TXT记录"><span class="nav-text">3.1 方式一：添加一条TXT记录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-安装ECC证书"><span class="nav-text">3.1.1 安装ECC证书</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-方式二：使用token"><span class="nav-text">3.2 方式二：使用token</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-更新证书"><span class="nav-text">4.更新证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-更新acme-sh"><span class="nav-text">5.更新acme.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-吊销证书"><span class="nav-text">6.吊销证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-别人家的安装方式"><span class="nav-text">7.别人家的安装方式</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tremyang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tremyang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

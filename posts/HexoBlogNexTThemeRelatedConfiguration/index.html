@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Hexo博客NexT主题相关配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客NexT主题相关配置">
+<meta property="og:url" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/index.html">
+<meta property="og:site_name" content="明天你好">
+<meta property="og:description" content="Hexo博客NexT主题相关配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E5%8D%9A%E5%AE%A2%E7%BD%AE%E9%A1%B6%E6%95%88%E6%9E%9C%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-big-counter.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-bounce.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-barber-shop.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-center-atom.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-center-circle.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-center-radar.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-center-simple.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-corner-indicator.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-fill-left.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-flash.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-loading-bar.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-mac-osx.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/pace-theme-minimal.gif">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4%E6%95%88%E6%9E%9C%E5%9B%BE.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/URL%E4%BC%98%E5%8C%96%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/InsertLocalPictureTest.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%BD%91%E9%A1%B5%E6%BA%90%E4%BB%A3%E7%A0%81.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE.png">
+<meta property="og:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2019-06-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-10-06T13:49:58.358Z">
+<meta property="article:author" content="tremyang">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/%E5%8D%9A%E5%AE%A2%E7%BD%AE%E9%A1%B6%E6%95%88%E6%9E%9C%E5%9B%BE.png">
+
+<link rel="canonical" href="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Hexo博客NexT主题相关配置 | 明天你好</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">明天你好</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/HexoBlogNexTThemeRelatedConfiguration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tremyang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="明天你好">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客NexT主题相关配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-08 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-08T00:00:00+08:00">2019-06-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-06 21:49:58" itemprop="dateModified" datetime="2019-10-06T21:49:58+08:00">2019-10-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <center>Hexo博客NexT主题相关配置</center>
+<a id="more"></a>
+
+<h3 id="1-个人配置"><a href="#1-个人配置" class="headerlink" title="1.个人配置"></a>1.个人配置</h3><ul>
+<li>Hexo v3.8.0</li>
+<li>NexT.Muse v7.1.2</li>
+</ul>
+<h3 id="2-Hexo博客NexT主题博客置顶"><a href="#2-Hexo博客NexT主题博客置顶" class="headerlink" title="2.Hexo博客NexT主题博客置顶"></a>2.Hexo博客NexT主题博客置顶</h3><h4 id="2-1安装支持置顶的仓库"><a href="#2-1安装支持置顶的仓库" class="headerlink" title="2.1安装支持置顶的仓库"></a>2.1安装支持置顶的仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+<p>然后在需要置顶的文章的<code>Front-matter</code>中加上<code>top: true</code>即可</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hexo博客置顶</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="number">-06</span><span class="number">-08</span> <span class="number">17</span><span class="string">:23:00</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">urlname:</span> <span class="string">HexoBlogTopping</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2设置置顶标志"><a href="#2-2设置置顶标志" class="headerlink" title="2.2设置置顶标志"></a>2.2设置置顶标志</h4><p>修改：<code>~/themes/next/layout/_macro</code> 目录下的post.swig文件，定位到<code>&lt;div class=&quot;post-meta&quot;&gt;</code>标签下方，插入如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> post.top %&#125;</span><br><span class="line">  &lt;i <span class="class"><span class="keyword">class</span></span>=<span class="string">"fa fa-thumb-tack"</span>&gt;&lt;<span class="regexp">/i&gt;</span></span><br><span class="line"><span class="regexp">  &lt;font color=7D26CD&gt;置顶&lt;/</span>font&gt;</span><br><span class="line">  &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"post-meta-divider"</span>&gt;|&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&#123;% endif %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-测试"><a href="#2-3-测试" class="headerlink" title="2.3.测试"></a>2.3.测试</h4><p>经过测试，<code>top</code>的值可以是阿拉伯数字，其中<code>1</code> 和<code>true</code> 相当，如果存在多篇置顶的文档，<code>top</code>值越大越靠前<br><img src="%E5%8D%9A%E5%AE%A2%E7%BD%AE%E9%A1%B6%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt=""></p>
+<h3 id="3-Hexo博客NexT主题添加顶部加载进度条"><a href="#3-Hexo博客NexT主题添加顶部加载进度条" class="headerlink" title="3.Hexo博客NexT主题添加顶部加载进度条"></a>3.Hexo博客NexT主题添加顶部加载进度条</h3><h4 id="3-1安装Progress-module"><a href="#3-1安装Progress-module" class="headerlink" title="3.1安装Progress module"></a>3.1安装Progress module</h4><p>进入Next主题目录<code>~/themes/next/</code>，使用Git bash clone文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pace <span class="built_in">source</span>/lib/pace</span><br></pre></td></tr></table></figure>
+<p>修改主题目录下<code>~/themes/next/</code>的主题配置文件<code>_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pace:</span> <span class="literal">true</span>  <span class="comment"># true  开启加载进度条</span></span><br><span class="line"><span class="comment"># Themes list:</span></span><br><span class="line"><span class="comment"># pace-theme-big-counter | pace-theme-bounce | pace-theme-barber-shop | pace-theme-center-atom</span></span><br><span class="line"><span class="comment"># pace-theme-center-circle | pace-theme-center-radar | pace-theme-center-simple | pace-theme-corner-indicator</span></span><br><span class="line"><span class="comment"># pace-theme-fill-left | pace-theme-flash | pace-theme-loading-bar | pace-theme-mac-osx | pace-theme-minimal</span></span><br><span class="line"><span class="attr">pace_theme:</span> <span class="string">pace-theme-flash</span> <span class="comment"># 选择上面Themes list中的一个</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-不同主题的预览效果"><a href="#3-2-不同主题的预览效果" class="headerlink" title="3.2.不同主题的预览效果"></a>3.2.不同主题的预览效果</h4><ul>
+<li>pace-theme-big-counter<br><img src="pace-theme-big-counter.gif" alt=""><hr /></li>
+<li>pace-theme-bounce  </li>
+</ul>
+<p><img src="pace-theme-bounce.gif" alt=""></p>
+<hr />
+- pace-theme-barber-shop  
+
+<p><img src="pace-theme-barber-shop.gif" alt=""></p>
+<hr />
+- pace-theme-center-atom  
+
+<p><img src="pace-theme-center-atom.gif" alt=""></p>
+<hr />
+- pace-theme-center-circle  
+
+<p><img src="pace-theme-center-circle.gif" alt=""></p>
+<hr />
+- pace-theme-center-radar  
+
+<p><img src="pace-theme-center-radar.gif" alt=""></p>
+<hr />
+- pace-theme-center-simple  
+
+<p><img src="pace-theme-center-simple.gif" alt=""></p>
+<hr />
+- pace-theme-corner-indicator  
+
+<p><img src="pace-theme-corner-indicator.gif" alt=""></p>
+<hr />
+- pace-theme-fill-left  
+
+<p><img src="pace-theme-fill-left.gif" alt=""></p>
+<hr />
+- pace-theme-flash  
+
+<p><img src="pace-theme-flash.gif" alt=""></p>
+<hr />
+- pace-theme-loading-bar  
+
+<p><img src="pace-theme-loading-bar.gif" alt=""></p>
+<hr />
+- pace-theme-mac-osx  
+
+<p><img src="pace-theme-mac-osx.gif" alt=""></p>
+<hr />
+- pace-theme-minimal  
+
+<p><img src="pace-theme-minimal.gif" alt=""></p>
+<hr />
+
+<h3 id="4-Hexo博客Next主题添加分类和标签页面"><a href="#4-Hexo博客Next主题添加分类和标签页面" class="headerlink" title="4.Hexo博客Next主题添加分类和标签页面"></a>4.Hexo博客Next主题添加分类和标签页面</h3><h4 id="4-1-添加「分类」页面"><a href="#4-1-添加「分类」页面" class="headerlink" title="4.1 添加「分类」页面"></a>4.1 添加「分类」页面</h4><p>新建「分类」页面，并在菜单中显示「分类」链接。「分类」页面将展示站点的所有分类，若你的所有文章都未包含分类，此页面将是空的。 底下代码是一篇包含分类的文章的例子：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Category</span> <span class="string">Test</span> <span class="string">Article</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Testing</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>在Hexo 站点目录下,使用 hexo new page 新建一个页面，命名为 categories ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>编辑刚新建的页面，将页面的 type 设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">categories</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="number">-06</span><span class="number">-06</span> <span class="number">23</span><span class="string">:47:40</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"categories"</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 注意：如果有集成评论服务，页面也会带有评论。若需要关闭的话，请添加字段 comments 并将值设置为 false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>在菜单中添加链接。编辑主题配置文件，添加 categories 到 menu 中，如下:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2添加「标签」页面"><a href="#4-2添加「标签」页面" class="headerlink" title="4.2添加「标签」页面"></a>4.2添加「标签」页面</h4><p>新建「标签」页面，并在菜单中显示「标签」链接。「标签」页面将展示站点的所有标签，若你的所有文章都未包含标签，此页面将是空的。 底下代码是一篇包含标签的文章的例子：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Tag</span> <span class="string">Test</span> <span class="string">Article</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Testing</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Another</span> <span class="string">Tag</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>在Hexo 站点目录下,使用 hexo new page 新建一个页面，命名为 tags ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="number">-06</span><span class="number">-06</span> <span class="number">23</span><span class="string">:47:40</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"tags"</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="comment"># 注意：如果有集成评论服务，页面也会带有评论。若需要关闭的话，请添加字段 comments 并将值设置为 false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>在菜单中添加链接。编辑主题配置文件，添加 categories 到 menu 中，如下:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-Hexo博客NexT主题添加搜索选项"><a href="#5-Hexo博客NexT主题添加搜索选项" class="headerlink" title="5.Hexo博客NexT主题添加搜索选项"></a>5.Hexo博客NexT主题添加搜索选项</h3><h4 id="5-1安装hexo-generator-searchdb插件"><a href="#5-1安装hexo-generator-searchdb插件" class="headerlink" title="5.1安装hexo-generator-searchdb插件"></a>5.1安装hexo-generator-searchdb插件</h4><p>在Hexo根目录启动命令窗口运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>编辑Hexo配置文件<code>~/_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<p>编辑主题配置文件<code>~/themes/next/_config.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Local search</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Hexo博客NexT主题显示最后更新时间"><a href="#6-Hexo博客NexT主题显示最后更新时间" class="headerlink" title="6.Hexo博客NexT主题显示最后更新时间"></a>6.Hexo博客NexT主题显示最后更新时间</h3><h4 id="6-1修改NexT主题-config-yml"><a href="#6-1修改NexT主题-config-yml" class="headerlink" title="6.1修改NexT主题_config.yml"></a>6.1修改NexT主题_config.yml</h4><p>NexT主题好像已经集成了，我在修改<code>date_format</code>的时候发现，修改完之后竟然有了最后更新时间</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Date / Time format</span></span><br><span class="line"><span class="comment">## Hexo uses Moment.js to parse and display date</span></span><br><span class="line"><span class="comment">## You can customize the date format as defined in</span></span><br><span class="line"><span class="comment">## http://momentjs.com/docs/#/displaying/format/</span></span><br><span class="line"><span class="attr">date_format:</span> <span class="string">YYYY-MM-DD</span> <span class="string">HH:mm:ss</span></span><br><span class="line"><span class="attr">time_format:</span> <span class="string">HH:mm:ss</span></span><br></pre></td></tr></table></figure>
+<p>仅仅将<code>date_format</code>，加上了<code>HH:mm:ss</code></p>
+<h4 id="6-2测试"><a href="#6-2测试" class="headerlink" title="6.2测试"></a>6.2测试</h4><p>效果图<br><img src="%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt=""></p>
+<h3 id="7-Hexo博客URL优化"><a href="#7-Hexo博客URL优化" class="headerlink" title="7.Hexo博客URL优化"></a>7.Hexo博客URL优化</h3><p>针对Hexo博客URL层级太多，以及包含中文名字进行优化</p>
+<h4 id="7-1修改permalink"><a href="#7-1修改permalink" class="headerlink" title="7.1修改permalink"></a>7.1修改permalink</h4><p>修改Hexo根目录<code>~/_config.yml</code>文件<br>定位<code>permalink</code>，默认配置为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span></span><br></pre></td></tr></table></figure>
+<p>将其修改为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:urlname/</span></span><br></pre></td></tr></table></figure>
+<p>其中，urlname是在每篇博客的Front-matter中定义的一个变量。也是为每篇博客取的英文名字。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hexo博客URL优化</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2019</span><span class="number">-06</span><span class="number">-08</span> <span class="number">16</span><span class="string">:51:00</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">urlname:</span> <span class="string">HexoBlogURLTuning</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>修改成功之后，服务器上的目录结构会变成这样：<br><img src="URL%E4%BC%98%E5%8C%96%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt=""><br>文件夹的名字是我们设置的title的名字，访问的URL是<code>域名/posts/urlname</code></p>
+<h3 id="8-Hexo博客插入本地图片"><a href="#8-Hexo博客插入本地图片" class="headerlink" title="8.Hexo博客插入本地图片"></a>8.Hexo博客插入本地图片</h3><h4 id="8-1修改Hexo配置文件"><a href="#8-1修改Hexo配置文件" class="headerlink" title="8.1修改Hexo配置文件"></a>8.1修改Hexo配置文件</h4><p>修改Hexo根目录下的_config.yml</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>这个功能实际上是Hexo官方文档中提到的资源文件夹功能，它的作用在于当你使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new tittle</span><br></pre></td></tr></table></figure>
+<p>生成新的文章的时候，会在<code>~/source/_posts</code>目录下生成一个文章名.md 文件外，还会生成一个与文章名同名的文件夹，可以用它来存放这篇文章的所有资源，比如图片，附件等。我们需要做的就是把我们本篇博客中使用到的图片放到与博客名字同名的文件夹里。<br><img src="%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt=""><br><del>### 3.安装hexo-asset-image插件</del>(现在的版本不需要安装依然可以使用asset标签)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p>但是我在使用过程中还是不能显示，所以参照了<a href="https://850552586.github.io/2018/11/15/hexo引用本地图片无法显示/" target="_blank" rel="noopener">这一篇博客</a>，对<code>~/node_modules/hexo-asset-image/</code>目录中的index.js 进行修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPosition</span>(<span class="params">str, m, i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="built_in">String</span>(hexo.version).split(<span class="string">'.'</span>);</span><br><span class="line">hexo.extend.filter.register(<span class="string">'after_post_render'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.config;</span><br><span class="line">  <span class="keyword">if</span>(config.post_asset_folder)&#123;</span><br><span class="line">    	<span class="keyword">var</span> link = data.permalink;</span><br><span class="line">	<span class="keyword">if</span>(version.length &gt; <span class="number">0</span> &amp;&amp; <span class="built_in">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">	   <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">'/'</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	   <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">'/'</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// In hexo 3.1.1, the permalink of "about" page is like ".../about/index.html".</span></span><br><span class="line">	<span class="keyword">var</span> endPos = link.lastIndexOf(<span class="string">'/'</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">'excerpt'</span>, <span class="string">'more'</span>, <span class="string">'content'</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: <span class="literal">false</span>,</span><br><span class="line">        xmlMode: <span class="literal">false</span>,</span><br><span class="line">        lowerCaseTags: <span class="literal">false</span>,</span><br><span class="line">        decodeEntities: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">'img'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> ($(<span class="keyword">this</span>).attr(<span class="string">'src'</span>))&#123;</span><br><span class="line">			<span class="comment">// For windows style path, we replace '\' to '/'.</span></span><br><span class="line">			<span class="keyword">var</span> src = $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>).replace(<span class="string">'\\'</span>, <span class="string">'/'</span>);</span><br><span class="line">			<span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.test(src) &amp;&amp;</span><br><span class="line">			   !<span class="regexp">/^\s*\//</span>.test(src)) &#123;</span><br><span class="line">			  <span class="comment">// For "about" page, the first part of "src" can't be removed.</span></span><br><span class="line">			  <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">			  <span class="keyword">var</span> linkArray = link.split(<span class="string">'/'</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> elem != <span class="string">''</span>;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  <span class="keyword">var</span> srcArray = src.split(<span class="string">'/'</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> elem != <span class="string">''</span> &amp;&amp; elem != <span class="string">'.'</span>;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  <span class="keyword">if</span>(srcArray.length &gt; <span class="number">1</span>)</span><br><span class="line">				srcArray.shift();</span><br><span class="line">			  src = srcArray.join(<span class="string">'/'</span>);</span><br><span class="line">			  $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>, config.root + link + src);</span><br><span class="line">			  <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">"update link as:--&gt;"</span>+config.root + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">"no src attr, skipped..."</span>);</span><br><span class="line">			<span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info($(<span class="keyword">this</span>));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="8-2测试"><a href="#8-2测试" class="headerlink" title="8.2测试"></a>8.2测试</h4><p>第一种方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](插入本地图片测试.png)</span><br></pre></td></tr></table></figure>
+
+<p><img src="%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95.png" alt=""></p>
+<p>第二种方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](InsertLocalPictureTest.png)</span><br></pre></td></tr></table></figure>
+<p><img src="InsertLocalPictureTest.png" alt=""></p>
+<p>第三种方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 插入本地图片测试.png %&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/posts/HexoBlogNexTThemeRelatedConfiguration/%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95.png" class="">
+
+<h4 id="8-3测试结果"><a href="#8-3测试结果" class="headerlink" title="8.3测试结果"></a>8.3测试结果</h4><p>经过测试发现，上述三种方法是可以实现插入图片的，通过查看网页源代码发现，中文名字的图片的名称发生了变化，变成了这样子。<br><img src="%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%BD%91%E9%A1%B5%E6%BA%90%E4%BB%A3%E7%A0%81.png" alt=""></p>
+<p>中文名称的图片会乱码，但是直接点击链接访问的话，URL是中文名称<br><img src="%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE.png" alt=""></p>
+<p>而服务器的目录结构中也是中文名称<br><img src="%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt=""></p>
+<p>而使用第三种方法即标签的方式，不会出现乱码问题</p>
+<h3 id="9-Hexo博客文章目录取消自带的编号"><a href="#9-Hexo博客文章目录取消自带的编号" class="headerlink" title="9.Hexo博客文章目录取消自带的编号"></a>9.Hexo博客文章目录取消自带的编号</h3><h4 id="9-1修改NexT主题-config-yml"><a href="#9-1修改NexT主题-config-yml" class="headerlink" title="9.1修改NexT主题_config.yml"></a>9.1修改NexT主题_config.yml</h4><p>利用<code>Ctrl + F</code> 搜索 <code>toc</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  number: true</span><br></pre></td></tr></table></figure>
+<p>将<code>number</code>修改为<code>false</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/InstallJDKOnWindows/" rel="prev" title="Windows端JDK安装及配置">
+      <i class="fa fa-chevron-left"></i> Windows端JDK安装及配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/InstallAria2/" rel="next" title="服务器安装aria2">
+      服务器安装aria2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-个人配置"><span class="nav-text">1.个人配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Hexo博客NexT主题博客置顶"><span class="nav-text">2.Hexo博客NexT主题博客置顶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1安装支持置顶的仓库"><span class="nav-text">2.1安装支持置顶的仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2设置置顶标志"><span class="nav-text">2.2设置置顶标志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-测试"><span class="nav-text">2.3.测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Hexo博客NexT主题添加顶部加载进度条"><span class="nav-text">3.Hexo博客NexT主题添加顶部加载进度条</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1安装Progress-module"><span class="nav-text">3.1安装Progress module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-不同主题的预览效果"><span class="nav-text">3.2.不同主题的预览效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Hexo博客Next主题添加分类和标签页面"><span class="nav-text">4.Hexo博客Next主题添加分类和标签页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-添加「分类」页面"><span class="nav-text">4.1 添加「分类」页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2添加「标签」页面"><span class="nav-text">4.2添加「标签」页面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Hexo博客NexT主题添加搜索选项"><span class="nav-text">5.Hexo博客NexT主题添加搜索选项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1安装hexo-generator-searchdb插件"><span class="nav-text">5.1安装hexo-generator-searchdb插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Hexo博客NexT主题显示最后更新时间"><span class="nav-text">6.Hexo博客NexT主题显示最后更新时间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1修改NexT主题-config-yml"><span class="nav-text">6.1修改NexT主题_config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2测试"><span class="nav-text">6.2测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Hexo博客URL优化"><span class="nav-text">7.Hexo博客URL优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1修改permalink"><span class="nav-text">7.1修改permalink</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Hexo博客插入本地图片"><span class="nav-text">8.Hexo博客插入本地图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1修改Hexo配置文件"><span class="nav-text">8.1修改Hexo配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2测试"><span class="nav-text">8.2测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3测试结果"><span class="nav-text">8.3测试结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Hexo博客文章目录取消自带的编号"><span class="nav-text">9.Hexo博客文章目录取消自带的编号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-1修改NexT主题-config-yml"><span class="nav-text">9.1修改NexT主题_config.yml</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tremyang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tremyang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
